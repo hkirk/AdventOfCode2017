@@ -43,5 +43,26 @@ object ChecksumTests extends TestSuite {
 
       }
     }
+
+    'PartTwo - {
+      'Ex - {
+        val givenInput = """5 9 2 8
+                           |9 4 7 3
+                           |3 8 6 5""".stripMargin
+        val checksum = new Checksum(givenInput)
+
+        val value = checksum.calculateChecksumEvenlyDivisibleValues()
+        assert(value == 9)
+      }
+
+      'Solution - {
+        val checksum = new Checksum(input)
+
+        val value = checksum.calculateChecksumEvenlyDivisibleValues()
+        println(value)
+        assert(value == 214)
+
+      }
+    }
   }
 }

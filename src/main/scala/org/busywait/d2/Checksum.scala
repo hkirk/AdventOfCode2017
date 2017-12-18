@@ -17,4 +17,23 @@ class Checksum(input: String) {
       max - min
     }).sum
   }
+
+  def calculateChecksumEvenlyDivisibleValues(): Long = {
+    def findEvenlyDivisibleValue(values: List[Int]): Long = {
+      val divisor = for {
+        i <- values
+        j <- values
+        if i != j
+        if i % j == 0
+      } yield (i, j)
+
+      divisor.head._1 / divisor.head._2
+    }
+
+    val result = rows map(column => {
+      findEvenlyDivisibleValue(column.sortWith(_ > _))
+    })
+
+    result.sum
+  }
 }
